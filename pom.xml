@@ -151,6 +151,11 @@
                             </includes>
                         </licenseSet>
                     </licenseSets>
+                    <properties>
+                        <year>2026</year>
+                        <owner>Jill Abarte</owner>
+                        <email>keiaa.07.05.00@gmail.com</email>
+                    </properties>
                 </configuration>
             </plugin>
 
