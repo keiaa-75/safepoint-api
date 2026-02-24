@@ -20,17 +20,17 @@
 
     <licenses>
         <license>
-        	<name>Mozilla Public License 2.0</name>
-        	<url>https://www.mozilla.org/en-us/MPL/2.0/</url>
-        	<distribution>repo</distribution>
+            <name>Mozilla Public License 2.0</name>
+            <url>https://www.mozilla.org/en-us/MPL/2.0/</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
     <developers>
         <developer>
-        	<id>keiaa-75</id>
-        	<name>Jill Abarte</name>
-        	<email>keiaa.07.05.00@gmail.com</email>
+            <id>keiaa-75</id>
+            <name>Jill Abarte</name>
+            <email>keiaa.07.05.00@gmail.com</email>
         </developer>
     </developers>
 
@@ -132,6 +132,28 @@
                 </configuration>
             </plugin>
 
+            <!--
+                License header management (always available, no profile needed)
+                  mvn com.mycila:license-maven-plugin:format  — add missing headers
+                  mvn com.mycila:license-maven-plugin:check   — verify headers exist
+                  mvn com.mycila:license-maven-plugin:remove  — strip all headers
+            -->
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${mycila-license.version}</version>
+                <configuration>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>com/mycila/maven/plugin/license/templates/MPL-2.txt</header>
+                            <includes>
+                                <include>src/**/*.java</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -142,21 +164,11 @@
             <build>
                 <plugins>
 
-                    <!-- License header check / format -->
+                    <!-- License header check (fails build if any headers are missing) -->
                     <plugin>
                         <groupId>com.mycila</groupId>
                         <artifactId>license-maven-plugin</artifactId>
                         <version>${mycila-license.version}</version>
-                        <configuration>
-                            <licenseSets>
-                                <licenseSet>
-                                    <header>com/mycila/maven/plugin/license/templates/MPL-2.txt</header>
-                                    <includes>
-                                        <include>src/**/*.java</include>
-                                    </includes>
-                                </licenseSet>
-                            </licenseSets>
-                        </configuration>
                         <executions>
                             <execution>
                                 <phase>verify</phase>
